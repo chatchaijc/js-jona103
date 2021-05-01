@@ -5,11 +5,73 @@ const restaurant = {
   categories: ["Italian", "Pizzaria", "Vegetarian", "Organic"],
   starterMenu: ["Focaccia", "Bruschetta", "Carlic Bread", "Caprese Salad"],
   mainMenu: ["Pizza", "Pasta", "Risotto"],
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22
+    },
+    fri: {
+      open: 11,
+      close: 23
+    },
+    sat: {
+      open: 0, //Open 24 hours
+      close: 24
+    }
+  },
 
   order: function(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+  orderDelivery: function({ time='20:00', address, mainIndex = 0, starterIndex = 1 }) {
+    console.log(
+      `Orer received! ${this.starterMenu[starterIndex]} and ${
+        this.mainMenu[mainIndex]
+      }will be delevered to ${address}at ${time}`
+    );
   }
 };
+
+restaurant.orderDelivery({
+  time: "22:30",
+  address: "Via del Sole, 21",
+  mainIndex: 2,
+  starterIndex: 2
+});
+
+restaurant.orderDelivery({
+  address: "Sansab Minburi Bangkok"
+})
+
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
+
+const {
+  name: restaurantName,
+  openingHours: hour,
+  categories: tags
+} = restaurant;
+console.log(restaurantName, hour, tags);
+// Default Value
+const { menu = [], starterMenu: starts = [] } = restaurant;
+console.log(menu, starts);
+
+// Mutating variables
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+({ a, b } = obj);
+console.log(a, b); //23,7
+
+// Nested objects
+const {
+  fri: { open: o, close: c }
+} = openingHours;
+console.log(o, c);
+
+/*
+/////////////////////////////////////////////////
+// Destructuring Arrays
 const arr = [2, 3, 4];
 const a = arr[0];
 const b = arr[1];
@@ -46,5 +108,4 @@ console.log(k,l,m);
 //default values
 const [p = 1,q=1,r = 1] = [8,9];
 console.log(p,q,r);
-
-
+*/
