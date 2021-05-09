@@ -42,6 +42,42 @@ const restaurant = {
 
 };
 
+// Use any data type, return ANY data type, short-circuiting
+console.log(3 || 'Chatchai');
+console.log('' || 'Chatchai');
+console.log(true || 0);
+console.log(undefined || null);
+console.log(false || true);
+
+console.log(undefined || 0 || '' || false || 'hello' ||23 || null);
+
+restaurant.numGuests = 30;
+const guests1   = restaurant.numGuests ? restaurant.numGuests : 10; // 10 default
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log("----- and ----");
+console.log(0 && 'Chatchai');
+console.log('Chatchai' && 0);
+console.log(7 && 'Chatchai');
+console.log('Chatchai' && 7);
+
+console.log('Hello' && 'Chatchai' && null && 0 && 23);
+
+// Practical example
+if (restaurant.orderPizza){
+  restaurant.orderPizza('mushrooms', 'spinach');
+};
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms','spinach');
+
+
+
+/*
+///////////////////////////////////////////
+// Rest Pattern and Parameters
 //1) Destructuring
 
 // Spread, because on Right side of =
@@ -78,7 +114,7 @@ add(...x);
 
 restaurant.orderPizza('mushrooms','onion','olives','spinach');
 restaurant.orderPizza('spinach');
-
+*/
 /*
 /////////////////////////////////////////
 // The Spread Operator(...)
